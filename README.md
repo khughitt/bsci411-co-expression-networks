@@ -7,4 +7,4 @@ Based on original presentatoin give at the [ISCB DC RSG 2016 Summer Workshop on 
 computational biology and genomics](http://iscb-dc-rsg.github.io/2016-summer-workshop/).
 
 - November 9, 2016
-- slides: [khughitt.github.io/bsci411-co-expression-networks/](khughitt.github.io/bsci411-co-expression-networks/#1)
+- slides: [khughitt.github.io/bsci411-co-expression-networks/](https://khughitt.github.io/bsci411-co-expression-networks/#1)
