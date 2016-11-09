@@ -122,6 +122,16 @@ class: smaller
 
 # What are co-expression networks useful for?
 
+<span style='font-size:24px;'>Now suppose that cell encounters some stimulus...</span>
+
+.center[![](image/raw/cell-2.svg)]
+.right-column[![](image/ink-small.png)]
+
+---
+class: smaller
+
+# What are co-expression networks useful for?
+
 <span style='font-size:24px;'>In response, some pathways may become activated...</span>
 
 --
@@ -575,60 +585,24 @@ cutree(dend, h=0.65)
 ```
 
 ---
-## Choosing the best parameters for your co-expression network
+class: smaller-code
 
-.center[![:scale 55%](image/hslm_v5.1_sim_meas_opt.png)]
+# Visualizing the result as a network
 
----
-## Choosing the best parameters for your co-expression network
 
-.center[![:scale 55%](image/param_opt_predictions_v5.0.png)]
+.center[![](image/coex-network.svg)]
 
----
-## Choosing the best parameters for your co-expression network
-
-.center[![](image/param_opt_predictions_v5.0-zoomed.png)]
-
----
+```r
+adj_mat[upper.tri(adj_mat)] <- 0
+adj_mat <- adj_mat**6
+adj_mat[upper.tri(adj_mat) | adj_mat < 0.1] <- 0
+g <- graph.adjacency(adj_mat, mode='undirected', weighted=TRUE)
+plot(g, layout=layout.fruchterman.reingold, vertex.size=3,
+     edge.width=E(g)$weight * 2, vertex.color=gene_colors)
+```
 
 ---
 class: center, middle
 
 ## Thank you!
-
----
-
-## Acknowledgements
-
-
-.left-column[
-#### El-Sayed Lab
-
-- Najib El-Sayed
-- April Hussey, Lab manager
-- Trey Belew, Ph.D., Post-doc
-- Saloe Bispoe, Ph.D., Post-doc
-- Maddy Paulson, Undergrad RA
-
-#### Community
-
-- MPRI
-- CBCB
-- BYOB
-- ISCB
-]
-
-.right-column[
-#### Collaborators
-
-- Hector Corrada-Bravo (UMD)
-- David Mosser (UMD)
-- Volker Briken (UMD)
-- Barbara Burleigh (Harvard)
-- Rebecca Manning (Cinvestav)
-- Jeronimo Ruiz (Fiocruz)
-- David Sacks (NIH)
-- Ehud Inbar (NIH)
-]
-
 

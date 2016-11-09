@@ -247,3 +247,23 @@ colored_bars(colors=clusters, dend=dend2, rowLabels='module')
 abline(h=0.65, col='red', lty=2)
 dev.off()
 
+###############################################################################
+#
+# Figure : Network visualization
+#
+###############################################################################
+
+# convert to undirected and raise remove spurious correlations
+adj_mat[upper.tri(adj_mat)] = 0
+adj_mat <- adj_mat**6
+
+adj_mat[adj_mat < 0.1] <- 0
+g <- graph.adjacency(adj_mat, mode='undirected', weighted=TRUE)
+V(g)$color <- gene_colors
+
+svg(file='../image/coex_network.svg', bg='transparent', height=6, width=6,
+    family='ubuntu')
+plot(g, layout=layout.fruchterman.reingold, vertex.size=3,
+     edge.width=E(g)$weight * 2)
+dev.off()
+
